@@ -1,0 +1,59 @@
+.videoContainer {
+  height: 100%;
+  width: 100%;
+}
+
+/* 搜索区域 */
+.sercachContainer {
+  padding: 20rpx;
+  display: flex;
+}
+.sercachContainer image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.sercachContainer .sercach {
+  margin: 0 20rpx;
+  flex: 1;
+  border-bottom: 2rpx solid rgb(202, 199, 199);
+  text-align: center;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #d43c33;
+}
+
+/* 导航区域 */
+.navScroll {
+  display: flex;
+  white-space: nowrap;
+  height: 60rpx;
+}
+.navScroll .navItem {
+  margin: 0 20rpx;
+  height: 60rpx;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 60rpx;
+  box-sizing: border-box;
+}
+.activeNav {
+  border-bottom: 4rpx solid #d43c33;
+}
+
+/* 视频区域 */
+.vc {
+  margin-top: 10rpx;
+  padding: 0 3%;
+}
+.videoScroll {
+  /* 小程序内部是没有dom的所以不能通过类似vue的那样，用ref去定位
+  其次，小程序考虑到tabar也有高度，当在tabar页面里面计算高度的时候
+  会自动减去tabar的高度
+  */
+  height: calc(100vh - 162rpx);
+}
+.videoItem .common{
+  width: 100%;
+  height: 360rpx;
+  border-radius: 10rpx;
+}

@@ -1,0 +1,112 @@
+
+/* 轮播图样式 */
+.banner image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 五个导航的样式 */
+.navContainer {
+  display: flex;
+}
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+.navItem .iconfont {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgb(240,19,19);
+  border-radius:50% ;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 50rpx;
+  color: #fff;
+  margin: 20rpx 0;
+}
+.navItem text {
+  font-size: 26rpx;
+}
+
+/* 推荐歌曲样式 */
+.recommendContainer {
+  padding: 0 20rpx;
+}
+
+.recommendContainer .recommedScroll {
+  display: flex;
+}
+.recommendContainer .recommedScroll .scrollItem {
+  width: 200rpx;
+  margin: 10rpx 10rpx;
+}
+.recommendContainer .recommedScroll image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+}
+.recommendContainer .recommedScroll text {
+  font-size: 26rpx;
+  /*  单行文本溢出 加省略号
+  display: block;  这里用block是因为text是内联元素，overflow无效，因为内联元素是被
+  内容撑开的，不会溢出
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis; */
+
+  /* 多行文本溢出 加省略号 */
+  /* 常规的元素模型属性无法实现多行文本溢出省略号代替效果，需要用到webkit内核的一些属性 */
+  overflow: hidden; 
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;  /* 设置-webkit-box元素对齐方式 */
+  -webkit-line-clamp: 2; /* 设置-webkit-box元素的行数 */
+}
+
+
+/* 排行榜 */
+.topList {
+  padding: 0 20rpx;
+}
+.topListSwiper {
+  height: 400rpx;
+}
+.swiperItem {
+  width: 95%;
+  background-color: #fbfbfb;
+}
+.swiperItem .title {
+  font-size: 26rpx;
+  line-height: 80rpx;
+}
+.musicItem {
+  font-size: 30rpx;
+  display: flex;
+  margin-bottom: 10rpx;
+}
+.musicItem image {
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 10rpx;
+}
+.musicItem .count {
+  height: 100rpx;
+  width: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.musicItem .musicName {
+  height: 100rpx;
+  line-height: 100rpx;
+  /* 网易云音乐的api音乐歌曲是实时更新的，有些新的歌曲的名称长度会很长，这里设置了单行文本溢出
+  单行文本溢出三部曲：1、设置超出文本不换行（不换行那就溢出）2、设置溢出隐藏 3、设置文本溢出部分 以分号表示！
+  */
+  max-width: 400rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+

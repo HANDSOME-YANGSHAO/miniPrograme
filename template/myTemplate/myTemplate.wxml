@@ -1,0 +1,6 @@
+<template name="myTem">
+  <view class="testTem">
+    <text> 账号: {{number}} </text>
+    <text> 密码: {{password}} </text>
+  </view>
+</template>

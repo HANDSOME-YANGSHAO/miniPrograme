@@ -1,0 +1,43 @@
+<view class="recommendSongContainer">
+  <!-- 头部区域 -->
+  <view class="header">
+    <image src="/static/images/recommendSong/recommendSong.jpg"></image>
+    <view class="date">
+      <text class="day">{{day}} / </text>
+      <text class="month">{{month}}</text>
+    </view>
+  </view>
+  
+  <!-- 歌曲列表 -->
+  <view class="listContainer">
+    <!-- 列表头 -->
+    <view class="listHeader">
+      <text>播放全部</text>
+      <text class="changeMore">多选</text>
+    </view>
+
+    <!-- 歌曲滚动列表 -->
+    <scroll-view scroll-y enable-flex class="listScroll">
+      <view
+        wx:for-item="firstItem"
+        class="scrollItem" 
+        wx:for="{{recommendList}}" 
+        wx:key="id"
+        data-index="{{index}}"
+        data-song="{{firstItem}}"
+        bindtap="toSongDeatil"  
+      >
+        <image src="{{firstItem.album.picUrl}}"></image>
+        <view class="musicInfo">
+          <text class="songName">{{firstItem.name}}</text>
+          <!-- <text class="author">{{firstItem.artists[0].name}}</text> -->
+          <view class="author">
+            <text wx:for="{{firstItem.artists}}" wx:key="id">{{item.name}}  </text>
+          </view>
+        </view>
+        <text class="iconfont icon-gengduo"></text>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>

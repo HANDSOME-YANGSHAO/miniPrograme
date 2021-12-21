@@ -1,0 +1,61 @@
+<view class="videoContainer">
+  <!-- 搜索区域 -->
+  <view class="sercachContainer" bindtap="toSearch">
+    <image src="/static/images/video/video.jpg"></image>
+    <view class="sercach">搜索歌曲</view>
+    <image src="/static/images/logo.png"></image>
+  </view>
+
+  <!-- 导航区域 -->
+  <scroll-view
+    scroll-into-view="{{'scroll'+currentNavId}}"
+    class="navScroll"
+    scroll-x 
+    enable-flex
+    scroll-with-animation
+  >
+    <view id="{{'scroll'+item.id}}" data-id="{{item.id}}" bindtap="changeNav" class="navItem {{currentNavId === item.id?'activeNav':''}}" wx:for="{{videoNavList}}" wx:key="id">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 视频区域 -->
+  <view class="vc">
+    <!-- 这里加了一层vc的是因为发现scroll-view的右边内边距失效 -->
+    <scroll-view
+      refresher-enabled
+      refresher-triggered="{{isRefresh}}"
+      bindrefresherrefresh="handleRefresh"
+      bindscrolltolower="handleToLower"
+      scroll-y
+      class="videoScroll"
+      enable-flex
+    >
+      <view
+        wx:for="{{videoData}}"
+        wx:key="id"
+        class="videoItem"
+      >
+        <video
+          object-fit="fill"
+          wx:if="{{videoId === item.data.vid}}"
+          class="common"
+          bindplay="handPlay"
+          bindtimeupdate="handleUpdateTime"
+          bindended="handleEnd"
+          id='{{item.data.vid}}'
+          src="{{item.data.urlInfo.url}}"
+          poster="{{item.data.coverUrl}}"
+        ></video>
+        <!-- 用image进行性能优化 -->
+        <image
+          wx:else
+          bindtap="handPlay"
+          id="{{item.data.vid}}" 
+          class="common" 
+          src="{{item.data.coverUrl}}"
+        ></image>
+      </view>
+    </scroll-view>
+  </view>
+</view>
